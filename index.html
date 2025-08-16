@@ -1,127 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Forex Signals by Phyzil</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phyzil Forex Movement</title>
   <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#f5f7fa; color:#333; }
-    header { background:#0a3d62; color:#FFD700; padding:20px; text-align:center; }
-    header h1 { margin:0; font-size:2em; }
-    nav { background:#1e3799; padding:12px; text-align:center; position:sticky; top:0; z-index:10; }
-    nav a { color:#fff; text-decoration:none; margin:0 15px; font-weight:bold; font-size:1.05em; }
-    nav a:hover { color:#FFD700; }
-    section { padding:30px 20px; max-width:900px; margin:auto; }
-    h2 { color:#0a3d62; margin-top:0; }
-    .signal { background:#fff; border-left:5px solid #FFD700; border-radius:10px; padding:14px 16px; margin:14px 0; box-shadow:0 2px 6px rgba(0,0,0,0.08); font-size:1.05em; }
-    .contact-links a { display:inline-block; margin:10px; padding:10px 20px; border-radius:8px; text-decoration:none; font-weight:600; transition:0.25s; }
-    .telegram { background:#0088cc; color:#fff; }
-    .telegram:hover { transform:translateY(-1px); }
-    .whatsapp { background:#25D366; color:#fff; }
-    .whatsapp:hover { transform:translateY(-1px); }
-    footer { background:#0a3d62; color:#FFD700; text-align:center; padding:12px; margin-top:40px; }
-    .muted { opacity:0.75; font-size:0.95em; }
+    /* General Dark Theme */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #0d1117;
+      color: #e6edf3;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(90deg, #0088cc, #25d366);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    section {
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #25d366;
+      border-bottom: 2px solid #0088cc;
+      padding-bottom: 5px;
+    }
+
+    /* Signal Cards */
+    .signal-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 15px 0;
+      box-shadow: 0px 3px 6px rgba(0,0,0,0.3);
+    }
+
+    /* Contact Buttons */
+    .contact-links a {
+      display: inline-block;
+      margin: 8px 10px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .email { background: #444; color: #fff; }
+    .email:hover { background: #666; }
+
+    .whatsapp { background: #25d366; color: #fff; }
+    .whatsapp:hover { background: #1ebd5a; }
+
+    .telegram { background: #0088cc; color: #fff; }
+    .telegram:hover { background: #006699; }
+
+    /* Floating WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 2px 2px 5px #999;
+      z-index: 100;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .whatsapp-float:hover {
+      background-color: #1ebd5a;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Forex Signals by Phyzil</h1>
-    <p>Your trusted source for free Forex trading signals</p>
-  </header>
+  <header>📈 Phyzil Forex Movement</header>
 
-  <nav>
-    <a href="#signals">Signals</a>
-    <a href="#history">History</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
+  <!-- Signals Section -->
   <section id="signals">
-    <h2>Latest Forex Signals</h2>
-    <p class="muted">Updated daily from <code>signals.txt</code>.</p>
-    <div id="signal-list">Loading signals...</div>
+    <h2>📊 Latest Signals</h2>
+    <div class="signal-card" id="signal-container">
+      Loading latest signals...
+    </div>
   </section>
 
+  <!-- History Section -->
   <section id="history">
-    <h2>Signal History</h2>
-    <p class="muted">Past trades pulled from <code>history.txt</code>. Add new results at the top.</p>
-    <div id="history-list">Loading history...</div>
+    <h2>📜 Signal History</h2>
+    <div class="signal-card" id="history-container">
+      Loading history...
+    </div>
   </section>
 
-  <section id="about">
-    <h2>About</h2>
-    <p>
-      Welcome! I provide free Forex trading signals based on careful analysis.
-      Follow the updates here daily and trade wisely.
-      Remember: Always manage risk and use stop loss!
-    </p>
+  <!-- Contact Section -->
   <section id="contact">
-  <h2>Contact Me</h2>
-  <p>📩 Email: <a href="mailto:enninkwamejohnson0572@gmail.com">enninkwamejohnson0572@gmail.com</a></p>
-  <p>📱 WhatsApp: <a href="https://wa.me/233536452498" target="_blank">Chat on WhatsApp</a></p>
-  <p>💬 Telegram (Direct): <a href="https://t.me/Physil_forex" target="_blank">@Physil_forex</a></p>
-  
-  <!-- New Telegram Channel Button -->
-  <p>
-    <a class="telegram-button" href="https://t.me/phyzilforexmovement" target="_blank">
-      📢 Join My Telegram Channel
-    </a>
-  </p>
-</section>
+    <h2>📬 Contact Me</h2>
+    <div class="contact-links">
+      <a class="email" href="mailto:enninkwamejohnson0572@gmail.com">✉️ Email</a>
+      <a class="whatsapp" href="https://wa.me/233536452498" target="_blank">💬 WhatsApp</a>
+      <a class="telegram" href="https://t.me/Physil_forex" target="_blank">💬 Telegram Direct</a>
+      <a class="telegram" href="https://t.me/phyzilforexmovement" target="_blank">📢 Telegram Channel</a>
+    </div>
+  </section>
 
-<style>
-  .telegram-button {
-    display: inline-block;
-    padding: 12px 20px;
-    margin-top: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-    background-color: #0088cc; /* Telegram blue */
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.3s;
-  }
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/233536452498" class="whatsapp-float" target="_blank">💬</a>
 
-  .telegram-button:hover {
-    background-color: #006699;
-  }
-</style>
-
-    <footer>
-    <p>&copy; 2025 Forex Signals by Phyzil. All rights reserved.</p>
-  </footer>
-
+  <!-- Script to fetch signals & history -->
   <script>
-    // Prevent cached versions of the .txt files
-    const bust = () => `?v=${Date.now()}`;
-
-    function escapeHtml(s) {
-      return s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+    async function loadText(file, containerId) {
+      try {
+        let response = await fetch(file);
+        if (!response.ok) throw new Error("File not found");
+        let text = await response.text();
+        document.getElementById(containerId).innerHTML =
+          text.replace(/\n/g, "<br>");
+      } catch (error) {
+        document.getElementById(containerId).innerHTML = "No data available.";
+      }
     }
-
-    function loadTextFile(src, targetId, emptyMessage) {
-      fetch(src + bust())
-        .then(r => {
-          if (!r.ok) throw new Error(r.status + ' ' + r.statusText);
-          return r.text();
-        })
-        .then(text => {
-          const lines = text.split(/\r?\n/).filter(l => l.trim() !== '');
-          const html = lines.length
-            ? lines.map(l => `<div class="signal"><p>${escapeHtml(l)}</p></div>`).join('')
-            : `<div class="muted">${emptyMessage}</div>`;
-          document.getElementById(targetId).innerHTML = html;
-        })
-        .catch(err => {
-          document.getElementById(targetId).innerHTML = "⚠️ Could not load.";
-          console.error('Load error for', src, err);
-        });
-    }
-
-    // Load current signals and history
-    loadTextFile('./signals.txt', 'signal-list', 'No active signals yet.');
-    loadTextFile('./history.txt', 'history-list', 'No history entries yet.');
+    loadText("signal.txt", "signal-container");
+    loadText("history.txt", "history-container");
   </script>
 </body>
 </html>
+
