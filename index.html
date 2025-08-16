@@ -56,72 +56,35 @@
       Remember: Always manage risk and use stop loss!
     </p>
   </section>
-<section id="contact">
-  <h2>Contact Me</h2>
-  <p>📩 Email: <a href="mailto:enninkwamejohnson0572@gmail.com">enninkwamejohnson0572@gmail.com</a></p>
-  <p>📱 WhatsApp: <a href="https://wa.me/233536452498" target="_blank">Chat on WhatsApp</a></p>
-  <p>💬 Telegram (Direct): <a href="https://t.me/Physil_forex" target="_blank">@Physil_forex</a></p>
-  
-  <!-- New Telegram Channel Button -->
-  <p>
-    <a class="telegram-button" href="https://t.me/phyzilforexmovement" target="_blank">
-      📢 Join My Telegram Channel
-    </a>
-  </p>
-</section>
+<!-- Contact Section -->
+  <section id="contact">
+    <h2>📬 Contact Me</h2>
+    <div class="contact-links">
+      <a class="email" href="mailto:enninkwamejohnson0572@gmail.com">✉️ Email</a>
+      <a class="whatsapp" href="https://wa.me/233536452498" target="_blank">💬 WhatsApp</a>
+      <a class="telegram" href="https://t.me/Physil_forex" target="_blank">💬 Telegram Direct</a>
+      <a class="telegram" href="https://t.me/phyzilforexmovement" target="_blank">📢 Telegram Channel</a>
+    </div>
+  </section>
 
-<style>
-  .telegram-button {
-    display: inline-block;
-    padding: 12px 20px;
-    margin-top: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-    background-color: #0088cc; /* Telegram blue */
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.3s;
-  }
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/233536452498" class="whatsapp-float" target="_blank">💬</a>
 
-  .telegram-button:hover {
-    background-color: #006699;
-  }
-</style>
-    <footer>
-    <p>&copy; 2025 Forex Signals by Phyzil. All rights reserved.</p>
-  </footer>
-
+  <!-- Script to fetch signals & history -->
   <script>
-    // Prevent cached versions of the .txt files
-    const bust = () => `?v=${Date.now()}`;
-
-    function escapeHtml(s) {
-      return s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+    async function loadText(file, containerId) {
+      try {
+        let response = await fetch(file);
+        if (!response.ok) throw new Error("File not found");
+        let text = await response.text();
+        document.getElementById(containerId).innerHTML =
+          text.replace(/\n/g, "<br>");
+      } catch (error) {
+        document.getElementById(containerId).innerHTML = "No data available.";
+      }
     }
-
-    function loadTextFile(src, targetId, emptyMessage) {
-      fetch(src + bust())
-        .then(r => {
-          if (!r.ok) throw new Error(r.status + ' ' + r.statusText);
-          return r.text();
-        })
-        .then(text => {
-          const lines = text.split(/\r?\n/).filter(l => l.trim() !== '');
-          const html = lines.length
-            ? lines.map(l => `<div class="signal"><p>${escapeHtml(l)}</p></div>`).join('')
-            : `<div class="muted">${emptyMessage}</div>`;
-          document.getElementById(targetId).innerHTML = html;
-        })
-        .catch(err => {
-          document.getElementById(targetId).innerHTML = "⚠️ Could not load.";
-          console.error('Load error for', src, err);
-        });
-    }
-
-    // Load current signals and history
-    loadTextFile('./signals.txt', 'signal-list', 'No active signals yet.');
-    loadTextFile('./history.txt', 'history-list', 'No history entries yet.');
+    loadText("signal.txt", "signal-container");
+    loadText("history.txt", "history-container");
   </script>
 </body>
 </html>
